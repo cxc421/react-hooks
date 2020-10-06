@@ -1,14 +1,19 @@
 // useState: tic tac toe
 // http://localhost:3000/isolated/exercise/04.js
 
-import React, {useState} from 'react';
+import React from 'react';
+import {useLocalStorageState} from '../utils';
 
 type Square = 'X' | 'O';
 type NullableSquare = Square | null;
 
 const initialSquares: null[] = Array(9).fill(null);
 function Board() {
-  const [squares, setSquares] = useState<NullableSquare[]>(initialSquares);
+  // const [squares, setSquares] = useState<NullableSquare[]>(initialSquares);
+  const [squares, setSquares] = useLocalStorageState<NullableSquare[]>(
+    'tic-tac-toe-squares',
+    initialSquares,
+  );
   const nextValue = calculateNextValue(squares); // ('X' or 'O')
   const winner = calculateWinner(squares); // ('X', 'O', or null)
   const status = calculateStatus(winner, squares, nextValue); // (`Winner: ${winner}`, `Scratch: Cat's game`, or `Next player: ${nextValue}`)
