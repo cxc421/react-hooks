@@ -75,7 +75,11 @@ function App() {
       <hr />
       <div className="pokemon-info">
         {/* 利用 key 不同時會 unmount/mount 的特性, 可以 reset ErrorBoundary 的 state */}
-        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={handleReset}>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={handleReset}
+          resetKeys={[pokemonName]}
+        >
           <PokemonInfo pokemonName={pokemonName} />
         </ErrorBoundary>
       </div>
