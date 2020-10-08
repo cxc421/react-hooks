@@ -24,7 +24,7 @@ type PokemonState =
 
 const PokemonInfo: FC<PokemonInfoProps> = ({pokemonName}) => {
   const [pokemonState, setPokemonState] = useState<PokemonState>({
-    status: 'idle',
+    status: pokemonName ? 'pending' : 'idle',
   });
 
   useEffect(() => {
